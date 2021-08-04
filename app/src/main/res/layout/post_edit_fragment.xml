@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.presentation.post_edit.PostEditFragment">
+    tools:context=".presentation.ui.post_edit.PostEditFragment">
 
     <TextView
         android:layout_width="match_parent"

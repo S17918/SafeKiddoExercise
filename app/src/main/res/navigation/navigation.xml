@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/postListFragment">
+    <fragment
+        android:id="@+id/postListFragment"
+        android:name="com.safekiddo.exercise.presentation.ui.post_list.PostListFragment"
+        android:label="Posts"
+        tools:layout="@layout/post_list_fragment" >
+        <action
+            android:id="@+id/addNewPostAction"
+            app:destination="@id/postAddFragment" />
+        <action
+            android:id="@+id/showPostAction"
+            app:destination="@id/postDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postAddFragment"
+        android:name="com.safekiddo.exercise.presentation.ui.post_add.PostAddFragment"
+        android:label="New Post"
+        tools:layout="@layout/post_add_fragment" />
+    <fragment
+        android:id="@+id/postDetailsFragment"
+        android:name="com.safekiddo.exercise.presentation.ui.post_details.PostDetailsFragment"
+        android:label="Post Details"
+        tools:layout="@layout/post_details_fragment" >
+        <action
+            android:id="@+id/postEditAction"
+            app:destination="@id/postEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postEditFragment"
+        android:name="com.safekiddo.exercise.presentation.ui.post_edit.PostEditFragment"
+        android:label="Edit Post"
+        tools:layout="@layout/post_edit_fragment" />
 </navigation>
