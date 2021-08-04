@@ -14,15 +14,15 @@ class SingleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val service = Client().buildService()
-
-        CoroutineScope(IO).launch {
-            val response = service.getPosts()
-
-            for(post: PostDto in response.posts){
-                println(post.description)
-            }
-        }
+//        val service = Client().buildService()
+//
+//        CoroutineScope(IO).launch {
+//            val response = service.getPosts()
+//
+//            for(post: PostDto in response.posts){
+//                println(post.description)
+//            }
+//        }
 
     }
 }
