@@ -16,7 +16,7 @@ class SingleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navController = findNavController(R.id.nav_host_fragment)
         val appBarConfiguration = AppBarConfiguration(navController.graph)
-        findViewById<Toolbar>(R.id.toolbar)
-            .setupWithNavController(navController, appBarConfiguration)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 }

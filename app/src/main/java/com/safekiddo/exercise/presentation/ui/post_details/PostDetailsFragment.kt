@@ -1,15 +1,12 @@
 package com.safekiddo.exercise.presentation.ui.post_details
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import com.safekiddo.exercise.R
 import com.safekiddo.exercise.domain.model.Post
 import com.squareup.picasso.Picasso
@@ -24,6 +21,11 @@ class PostDetailsFragment : Fragment() {
     private lateinit var postTitle: TextView
     private lateinit var postDescription: TextView
     private lateinit var postDescriptionCount: TextView
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,5 +68,4 @@ class PostDetailsFragment : Fragment() {
         postDescription.text = post.description
         postDescriptionCount.text = post.description?.count().toString()
     }
-
 }
