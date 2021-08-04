@@ -1,2 +1,0 @@
-# SafeKiddoExercise
-Exercise for SafeKiddo
