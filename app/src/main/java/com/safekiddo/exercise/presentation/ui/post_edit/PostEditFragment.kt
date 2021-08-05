@@ -97,7 +97,10 @@ class PostEditFragment : Fragment() {
     }
 
     private fun onCancelAction() {
+        val bundle = Bundle()
+        bundle.putParcelable("post", post)
         findNavController().popBackStack(R.id.postListFragment, false)
+        findNavController().navigate(R.id.showPostAction, bundle)
     }
 
     private fun initButtons(){
