@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class PostDto(
     @SerializedName("id")
-    var id: Int? = null,
+    var id: Int,
 
     @SerializedName("title")
-    var title: String? = null,
+    var title: String,
 
     @SerializedName("description")
-    var description: String? = null,
+    var description: String,
 
     @SerializedName("icon")
-    var featuredImage: String? = null
+    var featuredImage: String
 ) {
 }

@@ -8,6 +8,8 @@ import com.safekiddo.exercise.persistance.PostDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import java.io.IOException
 
 class PostRepositoryImpl(
     private val service: Service,
@@ -17,8 +19,16 @@ class PostRepositoryImpl(
 
     override fun getPostsFromApi() {
         CoroutineScope(IO).launch {
-            mapper.toDomainList(service.getPostsFromApi().posts).forEach {
-                insertPost(it)
+            try{
+                mapper.toDomainList(service.getPostsFromApi().posts).forEach {
+                    insertPost(it)
+                }
+            }catch (throwable: Throwable){
+                when(throwable){
+                    is IOException -> println("EXCEPTION: IOException")
+                    is HttpException -> println("EXCEPTION: HttpException")
+                    else -> println("EXCEPTION: UnknownException")
+                }
             }
         }
     }
@@ -28,6 +38,8 @@ class PostRepositoryImpl(
     }
 
     override fun insertPost(post: Post) {
-        database.roomPostDao().insertPost(post)
+        CoroutineScope(IO).launch {
+            database.roomPostDao().insertPost(post)
+        }
     }
 }

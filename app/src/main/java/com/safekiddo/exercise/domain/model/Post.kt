@@ -12,16 +12,17 @@ import kotlinx.parcelize.Parcelize
 data class Post(
 
     @NonNull
-    @PrimaryKey
-    val id: Int? = null,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int,
 
     @ColumnInfo(name = "title")
-    val title: String? = null,
+    val title: String,
 
     @ColumnInfo(name = "description")
-    val description: String? = null,
+    val description: String,
 
     @ColumnInfo(name = "icon")
-    val featuredImage: String? = null
+    val featuredImage: String
 ) : Parcelable {
+    constructor(title: String, description: String, featuredImage: String) : this(0, title, description, featuredImage)
 }
