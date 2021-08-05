@@ -9,7 +9,8 @@ class PostDtoMapper : DomainMapper<PostDto, Post> {
             id = model.id,
             title = model.title,
             description = model.description,
-            featuredImage = model.featuredImage
+            featuredImage = model.featuredImage,
+            favourite = false
         )
     }
 
@@ -18,7 +19,7 @@ class PostDtoMapper : DomainMapper<PostDto, Post> {
             id = domainModel.id,
             title = domainModel.title,
             description = domainModel.description,
-            featuredImage = domainModel.featuredImage
+            featuredImage = domainModel.featuredImage,
         )
     }
 

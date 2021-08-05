@@ -48,4 +48,10 @@ class PostRepositoryImpl(
             database.roomPostDao().deletePost(post)
         }
     }
+
+    override fun updatePost(post: Post){
+        CoroutineScope(IO).launch {
+            database.roomPostDao().updatePost(post)
+        }
+    }
 }

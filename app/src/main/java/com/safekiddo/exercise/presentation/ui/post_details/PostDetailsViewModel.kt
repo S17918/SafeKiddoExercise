@@ -12,4 +12,8 @@ class PostDetailsViewModel @Inject constructor(private val repository: PostRepos
     fun getPosts(): LiveData<List<Post>> {
         return repository.getPosts()
     }
+
+    fun updatePost(post: Post){
+        repository.updatePost(post)
+    }
 }

@@ -8,4 +8,5 @@ interface PostRepository {
     fun getPosts(): LiveData<List<Post>>
     fun insertPost(post: Post)
     fun deletePost(post: Post)
+    fun updatePost(post: Post)
 }

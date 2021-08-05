@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.safekiddo.exercise.R
 import com.safekiddo.exercise.domain.model.Post
 import com.squareup.picasso.Picasso
@@ -21,6 +22,7 @@ class PostDetailsFragment : Fragment() {
     private lateinit var postTitle: TextView
     private lateinit var postDescription: TextView
     private lateinit var postDescriptionCount: TextView
+    private var optionMenu: Menu? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +66,40 @@ class PostDetailsFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        return inflater.inflate(R.menu.menu, menu)
+        inflater.inflate(R.menu.menu, menu)
+
+        if(post.favourite){
+            menu.findItem(R.id.liked).isVisible = true
+            menu.findItem(R.id.like).isVisible = false
+        }else{
+            menu.findItem(R.id.liked).isVisible = false
+            menu.findItem(R.id.like).isVisible = true
+        }
+
+        optionMenu = menu
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.edit -> {
+                val bundle = Bundle()
+                bundle.putParcelable("post", post)
+                findNavController().navigate(R.id.postEditAction, bundle)
+            }
+            R.id.like -> {
+                item.isVisible = false
+                optionMenu?.findItem(R.id.liked)?.isVisible = true
+                post.favourite = true
+                viewModel.updatePost(post)
+            }
+            R.id.liked ->{
+                item.isVisible = false
+                optionMenu?.findItem(R.id.like)?.isVisible = true
+                post.favourite = false
+                viewModel.updatePost(post)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

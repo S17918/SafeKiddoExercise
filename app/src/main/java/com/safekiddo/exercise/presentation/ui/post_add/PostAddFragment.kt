@@ -78,7 +78,7 @@ class PostAddFragment : Fragment() {
         val description: String = descriptionEdit.text.toString()
         val image: String = selectedImage.toString()
 
-        val post: Post = Post(title, description, image)
+        val post: Post = Post(title, description, image, false)
         viewModel.insertPost(post)
 
         val bundle: Bundle = Bundle()

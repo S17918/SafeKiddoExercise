@@ -22,7 +22,10 @@ data class Post(
     val description: String,
 
     @ColumnInfo(name = "icon")
-    val featuredImage: String
+    val featuredImage: String,
+
+    @ColumnInfo(name = "favourite")
+    var favourite: Boolean
 ) : Parcelable {
-    constructor(title: String, description: String, featuredImage: String) : this(0, title, description, featuredImage)
+    constructor(title: String, description: String, featuredImage: String, favourite: Boolean) : this(0, title, description, featuredImage, false)
 }
