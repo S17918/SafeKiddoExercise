@@ -29,7 +29,6 @@ class PostAddFragment : Fragment() {
     private lateinit var imagePreview: ImageView
     private lateinit var titleEdit: EditText
     private lateinit var descriptionEdit: EditText
-
     private val SELECT_PICRUTE = 700
 
     override fun onCreateView(

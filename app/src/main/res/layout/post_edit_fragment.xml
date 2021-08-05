@@ -5,9 +5,97 @@
     android:layout_height="match_parent"
     tools:context=".presentation.ui.post_edit.PostEditFragment">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/edit_post_icon"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="300sp"/>
+
+            <LinearLayout
+                android:layout_margin="16sp"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:textSize="18sp"
+                    android:text="@string/select_image"/>
+
+                <Button
+                    android:id="@+id/edit_image_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/image"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:textSize="18sp"
+                    android:text="@string/post_title"
+                    android:layout_marginVertical="10sp"/>
+
+                <EditText
+                    android:id="@+id/edit_post_title"
+                    android:theme="@style/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/bold"
+                    android:textSize="22sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:textSize="18sp"
+                    android:text="@string/post_description"
+                    android:layout_marginVertical="10sp"/>
+
+                <EditText
+                    android:id="@+id/edit_post_description"
+                    android:theme="@style/editText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/regular"
+                    android:textSize="18sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginBottom="20sp">
+
+                    <Button
+                        android:id="@+id/edit_button_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="40sp"
+                        android:padding="5sp"
+                        android:text="@string/cancel"/>
+
+                    <Button
+                        android:id="@+id/edit_button_update"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="40sp"
+                        android:padding="5sp"
+                        android:text="@string/update"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

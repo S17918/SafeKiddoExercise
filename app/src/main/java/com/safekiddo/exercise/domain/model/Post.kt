@@ -16,13 +16,13 @@ data class Post(
     val id: Int,
 
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String,
 
     @ColumnInfo(name = "description")
-    val description: String,
+    var description: String,
 
     @ColumnInfo(name = "icon")
-    val featuredImage: String,
+    var featuredImage: String,
 
     @ColumnInfo(name = "favourite")
     var favourite: Boolean
