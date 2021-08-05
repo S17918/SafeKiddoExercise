@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class PostDetailsFragment : Fragment() {
 
     private val viewModel: PostDetailsViewModel by viewModels()
-    private var pos: Int = 0
+    private lateinit var post: Post
     private lateinit var postImage: ImageView
     private lateinit var postTitle: TextView
     private lateinit var postDescription: TextView
@@ -36,17 +36,11 @@ class PostDetailsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        pos = arguments?.getInt("pos")!!
+        post = arguments?.getParcelable("post")!!
         initImageView()
         initTextViews()
-        getPost()
-    }
-
-    private fun getPost() {
-        viewModel.getPosts().observe(viewLifecycleOwner){
-            setImageView(it[pos])
-            setTextViews(it[pos])
-        }
+        setImageView(post)
+        setTextViews(post)
     }
 
     private fun initImageView(){

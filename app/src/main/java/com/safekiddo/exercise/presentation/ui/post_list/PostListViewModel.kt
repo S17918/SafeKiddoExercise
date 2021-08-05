@@ -15,12 +15,12 @@ import javax.inject.Inject
 @HiltViewModel
 class PostListViewModel @Inject constructor(private val repository: PostRepository) : ViewModel() {
 
-    fun getRacesFromApi(){
-        repository.getPostsFromApi()
-    }
-
     fun getPosts(): LiveData<List<Post>> {
         return repository.getPosts()
+    }
+
+    fun deletePost(post: Post){
+        return repository.deletePost(post)
     }
 
 }

@@ -1,5 +1,7 @@
 package com.safekiddo.exercise.presentation.ui.post_list
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,6 +34,7 @@ class PostListFragment : Fragment(), OnPostClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecyclerAdapter
     private lateinit var addButton: FloatingActionButton
+    private var posts: List<Post> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,7 +47,6 @@ class PostListFragment : Fragment(), OnPostClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        getApiData()
         initRecyclerView()
         initFloatingButton()
         subscribeObservers()
@@ -53,11 +55,12 @@ class PostListFragment : Fragment(), OnPostClickListener {
     private fun subscribeObservers(){
         viewModel.getPosts().observe(viewLifecycleOwner){
             adapter.setPosts(it)
+            setPosts(it)
         }
     }
 
-    private fun getApiData() {
-        viewModel.getRacesFromApi()
+    private fun setPosts(list: List<Post>){
+        posts = list
     }
 
     private fun initRecyclerView(){
@@ -79,7 +82,23 @@ class PostListFragment : Fragment(), OnPostClickListener {
 
     override fun onPostClick(pos: Int) {
         val bundle: Bundle = Bundle()
-        bundle.putInt("pos", pos)
+        val post: Post = posts[pos]
+        bundle.putParcelable("post", post)
         findNavController().navigate(R.id.showPostAction, bundle)
+    }
+
+    override fun onLingPostClick(pos: Int) {
+        val alert: AlertDialog.Builder = AlertDialog.Builder(view?.context, R.style.DialogStyle)
+        alert.setTitle(R.string.alert)
+        alert.setMessage(R.string.alert_message)
+        alert.setPositiveButton(R.string.alert_yes
+        ) { _, _ ->
+            viewModel.deletePost(posts[pos])
+        }
+        alert.setNegativeButton(R.string.alert_no
+        ) { dialog, _ ->
+            dialog.dismiss()
+        }
+        alert.show()
     }
 }

@@ -7,4 +7,5 @@ interface PostRepository {
     fun getPostsFromApi()
     fun getPosts(): LiveData<List<Post>>
     fun insertPost(post: Post)
+    fun deletePost(post: Post)
 }

@@ -42,7 +42,8 @@ class RecyclerAdapter(private val clickListener: OnPostClickListener): RecyclerV
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View, private val clickListener: OnPostClickListener): RecyclerView.ViewHolder(itemView), View.OnClickListener{
+    class ViewHolder(itemView: View, private val clickListener: OnPostClickListener): RecyclerView.ViewHolder(itemView), View.OnClickListener,
+        View.OnLongClickListener {
 
         private var postTitle: TextView? = null
         private var postIcon: ImageView? = null
@@ -51,6 +52,7 @@ class RecyclerAdapter(private val clickListener: OnPostClickListener): RecyclerV
             postTitle = itemView.findViewById(R.id.post_title)
             postIcon = itemView.findViewById(R.id.post_icon)
             itemView.setOnClickListener(this)
+            itemView.setOnLongClickListener(this)
         }
 
         fun bind(post: Post){
@@ -61,6 +63,11 @@ class RecyclerAdapter(private val clickListener: OnPostClickListener): RecyclerV
 
         override fun onClick(v: View?) {
             clickListener.onPostClick(adapterPosition)
+        }
+
+        override fun onLongClick(v: View?): Boolean {
+            clickListener.onLingPostClick(adapterPosition)
+            return true
         }
     }
 }

@@ -1,10 +1,7 @@
 package com.safekiddo.exercise.persistance
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.safekiddo.exercise.domain.model.Post
 
 @Dao
@@ -15,4 +12,7 @@ interface PostDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertPost(post: Post): Long
+
+    @Delete
+    fun deletePost(post: Post)
 }

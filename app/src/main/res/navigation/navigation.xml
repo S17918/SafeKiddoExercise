@@ -20,7 +20,8 @@
         android:id="@+id/postAddFragment"
         android:name="com.safekiddo.exercise.presentation.ui.post_add.PostAddFragment"
         android:label="New Post"
-        tools:layout="@layout/post_add_fragment" />
+        tools:layout="@layout/post_add_fragment" >
+    </fragment>
     <fragment
         android:id="@+id/postDetailsFragment"
         android:name="com.safekiddo.exercise.presentation.ui.post_details.PostDetailsFragment"

@@ -80,6 +80,12 @@ class PostAddFragment : Fragment() {
 
         val post: Post = Post(title, description, image)
         viewModel.insertPost(post)
+
+        val bundle: Bundle = Bundle()
+        bundle.putParcelable("post", post)
+
+        findNavController().popBackStack(R.id.postListFragment, false)
+        findNavController().navigate(R.id.showPostAction, bundle)
     }
 
     private fun onCancelAction() {
