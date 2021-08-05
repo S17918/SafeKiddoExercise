@@ -68,4 +68,8 @@ class PostDetailsFragment : Fragment() {
         postDescription.text = post.description
         postDescriptionCount.text = post.description?.count().toString()
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        return inflater.inflate(R.menu.menu, menu)
+    }
 }

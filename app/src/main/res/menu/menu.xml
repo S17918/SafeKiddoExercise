@@ -12,7 +12,8 @@
         app:showAsAction="always"
         android:icon="@drawable/outline_favorite_24"
         android:iconTint="@color/white"
-        android:title="@string/liked"/>
+        android:title="@string/liked"
+        android:visible="false"/>
     <item
         android:id="@+id/edit"
         app:showAsAction="always"
