@@ -4,9 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 import com.safekiddo.exercise.domain.model.Post
-import com.safekiddo.exercise.persistance.conventer.Converters
 
 @Database(entities = [Post::class], version = 1)
 //@TypeConverters(Converters::class)
@@ -22,11 +20,11 @@ abstract class PostDatabase : RoomDatabase(){
 
         fun getInstance(context: Context): PostDatabase{
             return instance ?: synchronized(this){
-                instance ?: buildDatabse(context).also { instance = it }
+                instance ?: postDatabase(context).also { instance = it }
             }
         }
 
-        private fun buildDatabse(context: Context): PostDatabase {
+        private fun postDatabase(context: Context): PostDatabase {
             return Room.databaseBuilder(context, PostDatabase::class.java, DATABASE).build()
         }
     }

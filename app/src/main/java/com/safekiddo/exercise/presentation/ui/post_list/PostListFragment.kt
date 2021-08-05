@@ -1,16 +1,12 @@
 package com.safekiddo.exercise.presentation.ui.post_list
 
 import android.app.AlertDialog
-import android.content.DialogInterface
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.viewModels
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,13 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.safekiddo.exercise.R
 import com.safekiddo.exercise.adapter.RecyclerAdapter
 import com.safekiddo.exercise.domain.model.Post
-import com.safekiddo.exercise.network.model.PostDto
 import com.safekiddo.exercise.util.OnPostClickListener
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PostListFragment : Fragment(), OnPostClickListener {
@@ -81,7 +72,7 @@ class PostListFragment : Fragment(), OnPostClickListener {
     }
 
     override fun onPostClick(pos: Int) {
-        val bundle: Bundle = Bundle()
+        val bundle = Bundle()
         val post: Post = posts[pos]
         bundle.putParcelable("post", post)
         findNavController().navigate(R.id.showPostAction, bundle)

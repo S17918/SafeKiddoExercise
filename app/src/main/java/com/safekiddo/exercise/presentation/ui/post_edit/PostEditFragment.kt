@@ -3,7 +3,6 @@ package com.safekiddo.exercise.presentation.ui.post_edit
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -70,7 +69,7 @@ class PostEditFragment : Fragment() {
 
         viewModel.updatePost(post)
 
-        val bundle: Bundle = Bundle()
+        val bundle = Bundle()
         bundle.putParcelable("post", post)
         findNavController().popBackStack(R.id.postListFragment, false)
         findNavController().navigate(R.id.showPostAction, bundle)

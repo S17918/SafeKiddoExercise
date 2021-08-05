@@ -3,7 +3,6 @@ package com.safekiddo.exercise.presentation.ui.post_add
 import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -52,7 +51,7 @@ class PostAddFragment : Fragment() {
     }
 
     private fun setImage() {
-        val intent: Intent = Intent()
+        val intent = Intent()
         intent.action = Intent.ACTION_OPEN_DOCUMENT
         intent.type = "image/*"
         intent.addFlags(Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
@@ -77,10 +76,10 @@ class PostAddFragment : Fragment() {
         val description: String = descriptionEdit.text.toString()
         val image: String = selectedImage.toString()
 
-        val post: Post = Post(title, description, image, false)
+        val post = Post(title, description, image, false)
         viewModel.insertPost(post)
 
-        val bundle: Bundle = Bundle()
+        val bundle = Bundle()
         bundle.putParcelable("post", post)
 
         findNavController().popBackStack(R.id.postListFragment, false)

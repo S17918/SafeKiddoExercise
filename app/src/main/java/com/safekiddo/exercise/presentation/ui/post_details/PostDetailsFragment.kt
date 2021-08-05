@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -50,7 +49,7 @@ class PostDetailsFragment : Fragment() {
     }
 
     private fun setImageView(post: Post){
-        Picasso.get().load(post.featuredImage?.replace("https", "http")?.replace("http", "https")).into(postImage)
+        Picasso.get().load(post.featuredImage.replace("https", "http").replace("http", "https")).into(postImage)
     }
 
     private fun initTextViews(){
@@ -62,7 +61,7 @@ class PostDetailsFragment : Fragment() {
     private fun setTextViews(post: Post){
         postTitle.text = post.title
         postDescription.text = post.description
-        postDescriptionCount.text = post.description?.count().toString()
+        postDescriptionCount.text = post.description.count().toString()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

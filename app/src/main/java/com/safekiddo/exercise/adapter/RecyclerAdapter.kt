@@ -1,22 +1,15 @@
 package com.safekiddo.exercise.adapter
 
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.recyclerview.widget.RecyclerView
 import com.safekiddo.exercise.R
 import com.safekiddo.exercise.domain.model.Post
 import com.safekiddo.exercise.util.OnPostClickListener
 import com.squareup.picasso.Picasso
-import java.io.File
-import kotlin.coroutines.coroutineContext
 
 class RecyclerAdapter(private val clickListener: OnPostClickListener): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 

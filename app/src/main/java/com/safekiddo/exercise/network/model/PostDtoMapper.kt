@@ -14,20 +14,7 @@ class PostDtoMapper : DomainMapper<PostDto, Post> {
         )
     }
 
-    override fun mapFromDomainModel(domainModel: Post): PostDto {
-        return PostDto(
-            id = domainModel.id,
-            title = domainModel.title,
-            description = domainModel.description,
-            featuredImage = domainModel.featuredImage,
-        )
-    }
-
     fun toDomainList(list: List<PostDto>): List<Post>{
         return list.map { mapToDomainModel(it) }
-    }
-
-    fun fromDomainList(list: List<Post>): List<PostDto>{
-        return list.map { mapFromDomainModel(it) }
     }
 }
